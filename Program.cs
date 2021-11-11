@@ -6,6 +6,8 @@ namespace VinterProjekt
 {
   class Program
   {
+    public static Rectangle playerRect = new Rectangle(150, 150, 50, 50);
+
     static void Main(string[] args)
     {
       int width = 1200;
@@ -16,12 +18,13 @@ namespace VinterProjekt
 
       Raylib.InitWindow(width, height, "Hello World");
 
-      Rectangle playerRect = new Rectangle(150, 150, 50, 50);
+      Rectangle bullet = new Rectangle(playerRect.x, playerRect.y, 10, 10);
+      Rectangle newBullet = new Rectangle(playerRect.x + 10, playerRect.y, 10, 10);
 
       Color newPink = new Color(255, 105, 180, 255);
 
       Raylib.SetExitKey(KeyboardKey.KEY_ESCAPE);
-
+      bool shooting = false;
 
       while (!Raylib.WindowShouldClose())
       {
@@ -29,21 +32,35 @@ namespace VinterProjekt
         Vector2 mousePos = Raylib.GetMousePosition();
         bool areOverlapping = Raylib.CheckCollisionPointRec(mousePos, playerRect);
 
+
         if (Raylib.IsKeyDown(KeyboardKey.KEY_S) && playerRect.y != gameHeight)
         {
-          playerRect.y += Convert.ToSingle(2);
+          playerRect.y += Convert.ToSingle(1);
         }
         else if (Raylib.IsKeyDown(KeyboardKey.KEY_W) && playerRect.y != 0)
         {
-          playerRect.y -= Convert.ToSingle(2);
+          playerRect.y -= Convert.ToSingle(1);
         }
         else if (Raylib.IsKeyDown(KeyboardKey.KEY_D) && playerRect.x != gameWidth)
         {
-          playerRect.x += Convert.ToSingle(2);
+          playerRect.x += Convert.ToSingle(1);
         }
         else if (Raylib.IsKeyDown(KeyboardKey.KEY_A) && playerRect.x != 0)
         {
-          playerRect.x -= Convert.ToSingle(2);
+          playerRect.x -= Convert.ToSingle(1);
+        }
+
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_SPACE))
+        {
+          shooting = true;
+          bullet.x += 2;
+          newBullet.x += 2;
+
+        }
+
+        if (shooting)
+        {
+
         }
 
         Raylib.BeginDrawing();
@@ -57,11 +74,14 @@ namespace VinterProjekt
         Raylib.DrawText(areOverlapping.ToString(), 10, 60, 20, Color.BLACK);
 
         Raylib.DrawRectangleRec(playerRect, Color.SKYBLUE);
+        Raylib.DrawRectangleRec(newBullet, Color.SKYBLUE);
+        Raylib.DrawRectangleRec(bullet, Color.SKYBLUE);
 
         Raylib.EndDrawing();
 
       }
     }
+
   }
 }
 
