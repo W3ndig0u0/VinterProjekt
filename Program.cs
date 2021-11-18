@@ -20,8 +20,8 @@ namespace VinterProjekt
 
       Rectangle playerRect = new Rectangle(150, 150, RECS_WIDTH, RECS_HEIGHT);
 
-      int width = 800;
-      int height = 600;
+      int width = 1400;
+      int height = 700;
 
       int gameWidth = width - RECS_WIDTH;
       int gameHeight = height - RECS_HEIGHT;
@@ -34,8 +34,8 @@ namespace VinterProjekt
       {
         for (int x = 0; x < MAX_RECS_X; x++)
         {
-          rects[y * MAX_RECS_X + x].x = 250 + RECS_WIDTH * x;
-          rects[y * MAX_RECS_X + x].y = 50 + RECS_HEIGHT * y;
+          rects[y * MAX_RECS_X + x].x = 600 + RECS_WIDTH * x;
+          rects[y * MAX_RECS_X + x].y = 100 + RECS_HEIGHT * y;
           rects[y * MAX_RECS_X + x].width = RECS_WIDTH;
           rects[y * MAX_RECS_X + x].height = RECS_HEIGHT;
         }
