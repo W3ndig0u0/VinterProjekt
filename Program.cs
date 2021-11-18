@@ -6,25 +6,26 @@ namespace VinterProjekt
 {
   class Program
   {
-    public static Rectangle playerRect = new Rectangle(150, 150, 50, 50);
 
     static void Main(string[] args)
     {
-      int width = 1200;
-      int height = 600;
+      Rectangle playerRect = new Rectangle(150, 150, 50, 50);
+      Rectangle TetrisRect = new Rectangle(350, 0, 600, 800);
+      Rectangle TetrisRectMini = new Rectangle(350, 100, 50, 50);
+      Void DrawRectangleLinesEx(TetrisRectMini, 3, Color.BLACK);
+
+      int width = 1300;
+      int height = 800;
 
       int gameWidth = width - 50;
       int gameHeight = height - 50;
 
       Raylib.InitWindow(width, height, "Hello World");
-
-      Rectangle bullet = new Rectangle(playerRect.x, playerRect.y, 10, 10);
-      Rectangle newBullet = new Rectangle(playerRect.x + 10, playerRect.y, 10, 10);
+      Raylib.SetTargetFPS(60);
 
       Color newPink = new Color(255, 105, 180, 255);
 
       Raylib.SetExitKey(KeyboardKey.KEY_ESCAPE);
-      bool shooting = false;
 
       while (!Raylib.WindowShouldClose())
       {
@@ -35,36 +36,25 @@ namespace VinterProjekt
 
         if (Raylib.IsKeyDown(KeyboardKey.KEY_S) && playerRect.y != gameHeight)
         {
-          playerRect.y += Convert.ToSingle(1);
+          playerRect.y += Convert.ToSingle(5);
         }
         else if (Raylib.IsKeyDown(KeyboardKey.KEY_W) && playerRect.y != 0)
         {
-          playerRect.y -= Convert.ToSingle(1);
+          playerRect.y -= Convert.ToSingle(5);
         }
         else if (Raylib.IsKeyDown(KeyboardKey.KEY_D) && playerRect.x != gameWidth)
         {
-          playerRect.x += Convert.ToSingle(1);
+          playerRect.x += Convert.ToSingle(5);
         }
         else if (Raylib.IsKeyDown(KeyboardKey.KEY_A) && playerRect.x != 0)
         {
-          playerRect.x -= Convert.ToSingle(1);
-        }
-
-        if (Raylib.IsKeyDown(KeyboardKey.KEY_SPACE))
-        {
-          shooting = true;
-          bullet.x += 2;
-          newBullet.x += 2;
-
-        }
-
-        if (shooting)
-        {
-
+          playerRect.x -= Convert.ToSingle(5);
         }
 
         Raylib.BeginDrawing();
         Raylib.ClearBackground(Color.WHITE);
+        Raylib.DrawRectangleRec(TetrisRect, Color.LIGHTGRAY);
+        Raylib.DrawRectangleRec(TetrisRectMini, Color.WHITE);
 
         Raylib.DrawText(mousePos.ToString(), 10, 10, 25, Color.ORANGE);
 
@@ -74,8 +64,6 @@ namespace VinterProjekt
         Raylib.DrawText(areOverlapping.ToString(), 10, 60, 20, Color.BLACK);
 
         Raylib.DrawRectangleRec(playerRect, Color.SKYBLUE);
-        Raylib.DrawRectangleRec(newBullet, Color.SKYBLUE);
-        Raylib.DrawRectangleRec(bullet, Color.SKYBLUE);
 
         Raylib.EndDrawing();
 
