@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System;
 using System.Numerics;
 using Raylib_cs;
 
@@ -9,21 +10,36 @@ namespace VinterProjekt
 
     static void Main(string[] args)
     {
-      Rectangle playerRect = new Rectangle(150, 150, 50, 50);
-      Rectangle TetrisRect = new Rectangle(350, 0, 600, 800);
-      Rectangle TetrisRectMini = new Rectangle(350, 100, 50, 50);
-      Void DrawRectangleLinesEx(TetrisRectMini, 3, Color.BLACK);
+      int RECS_WIDTH = 25;
+      int RECS_HEIGHT = 25;
+      int MAX_RECS_X = 250 / RECS_WIDTH;
+      int MAX_RECS_Y = 500 / RECS_HEIGHT;
 
-      int width = 1300;
-      int height = 800;
+      Rectangle[] rects = new Rectangle[MAX_RECS_X * MAX_RECS_Y];
+      // List<Rectangle> rects = new List<Rectangle>();
 
-      int gameWidth = width - 50;
-      int gameHeight = height - 50;
+      Rectangle playerRect = new Rectangle(150, 150, RECS_WIDTH, RECS_HEIGHT);
+
+      int width = 800;
+      int height = 600;
+
+      int gameWidth = width - RECS_WIDTH;
+      int gameHeight = height - RECS_HEIGHT;
 
       Raylib.InitWindow(width, height, "Hello World");
       Raylib.SetTargetFPS(60);
 
-      Color newPink = new Color(255, 105, 180, 255);
+
+      for (int y = 0; y < MAX_RECS_Y; y++)
+      {
+        for (int x = 0; x < MAX_RECS_X; x++)
+        {
+          rects[y * MAX_RECS_X + x].x = 250 + RECS_WIDTH * x;
+          rects[y * MAX_RECS_X + x].y = 50 + RECS_HEIGHT * y;
+          rects[y * MAX_RECS_X + x].width = RECS_WIDTH;
+          rects[y * MAX_RECS_X + x].height = RECS_HEIGHT;
+        }
+      }
 
       Raylib.SetExitKey(KeyboardKey.KEY_ESCAPE);
 
@@ -53,8 +69,13 @@ namespace VinterProjekt
 
         Raylib.BeginDrawing();
         Raylib.ClearBackground(Color.WHITE);
-        Raylib.DrawRectangleRec(TetrisRect, Color.LIGHTGRAY);
-        Raylib.DrawRectangleRec(TetrisRectMini, Color.WHITE);
+
+
+        for (int i = 0; i < MAX_RECS_X * MAX_RECS_Y; i++)
+        {
+          Raylib.DrawRectangleRec(rects[i], Color.WHITE);
+          Raylib.DrawRectangleLinesEx(rects[i], 1, Color.BLACK);
+        }
 
         Raylib.DrawText(mousePos.ToString(), 10, 10, 25, Color.ORANGE);
 
