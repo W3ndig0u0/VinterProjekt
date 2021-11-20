@@ -1,15 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System.Net.Mime;
+using System.Collections.Generic;
 using System;
 using System.Numerics;
 using Raylib_cs;
+using System.Timers;
+
 
 namespace VinterProjekt
 {
   class Program
   {
 
+    static System.Timers.Timer aTimer;
+
     static void Main(string[] args)
     {
+
       Board board = new Board();
       Pieces pieces = new Pieces();
 
@@ -31,11 +37,15 @@ namespace VinterProjekt
       int height = 700;
       int width = 1400;
 
+      int S_HoldTime = 0;
+      int D_HoldTime = 0;
+      int A_HoldTime = 0;
+
       int gameWidth = width - RECS_WIDTH;
       int gameHeight = height - RECS_HEIGHT;
 
       Raylib.InitWindow(width, height, "Hello World");
-      Raylib.SetTargetFPS(60);
+      Raylib.SetTargetFPS(120);
 
       Raylib.SetExitKey(KeyboardKey.KEY_ESCAPE);
 
@@ -53,23 +63,115 @@ namespace VinterProjekt
 
       while (!Raylib.WindowShouldClose())
       {
-        // !Om man håller i, flyg till andra sidan...
 
-        if (Raylib.IsKeyPressed(KeyboardKey.KEY_S) && playerRect.y != 575)
+        aTimer = new System.Timers.Timer(2000);
+        // Hook up the Elapsed event for the timer. 
+        aTimer.Elapsed += OnTimedEvent;
+        aTimer.AutoReset = true;
+        aTimer.Enabled = true;
+
+        aTimer.Stop();
+        aTimer.Dispose();
+
+        // !Hold a bit = SPEEED
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_S) && playerRect.y < 575)
+        {
+          S_HoldTime += 10;
+          if (S_HoldTime > 300)
+          {
+            playerRect.y += Convert.ToSingle(RECS_WIDTH);
+          }
+          else
+          {
+            playerRect.y += Convert.ToSingle(0);
+          }
+        }
+
+        else if (Raylib.IsKeyDown(KeyboardKey.KEY_D) && playerRect.x < 825)
+        {
+          D_HoldTime += 10;
+          if (D_HoldTime > 300)
+          {
+            playerRect.x += Convert.ToSingle(RECS_WIDTH);
+          }
+          else
+          {
+            playerRect.x += Convert.ToSingle(0);
+          }
+        }
+
+        else if (Raylib.IsKeyDown(KeyboardKey.KEY_A) && playerRect.x > gridXStart)
+        {
+          A_HoldTime += 10;
+          if (A_HoldTime > 300)
+          {
+            playerRect.x -= Convert.ToSingle(RECS_WIDTH);
+          }
+          else
+          {
+            playerRect.x -= Convert.ToSingle(0);
+          }
+        }
+
+
+        // !Tap = down once
+        if (Raylib.IsKeyPressed(KeyboardKey.KEY_S) && playerRect.y < 575)
         {
           playerRect.y += Convert.ToSingle(RECS_WIDTH);
         }
-        else if (Raylib.IsKeyPressed(KeyboardKey.KEY_W) && playerRect.y != gridYStart)
+
+        else if (Raylib.IsKeyPressed(KeyboardKey.KEY_A) && playerRect.x > gridXStart)
         {
-          playerRect.y -= Convert.ToSingle(RECS_WIDTH);
+          playerRect.x -= Convert.ToSingle(RECS_WIDTH);
         }
-        else if (Raylib.IsKeyPressed(KeyboardKey.KEY_D) && playerRect.x != 825)
+
+        else if (Raylib.IsKeyPressed(KeyboardKey.KEY_D) && playerRect.y < 825)
         {
           playerRect.x += Convert.ToSingle(RECS_WIDTH);
         }
-        else if (Raylib.IsKeyPressed(KeyboardKey.KEY_A) && playerRect.x != gridXStart)
+
+        // !Extra Knappar
+        if (Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE) && playerRect.y < 575)
         {
-          playerRect.x -= Convert.ToSingle(RECS_WIDTH);
+          playerRect.y = 575;
+        }
+
+        bool pressK = false;
+        bool pressJ = false;
+        bool pressHold = false;
+
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_K))
+        {
+          pressK = true;
+        }
+
+
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_W) || Raylib.IsKeyDown(KeyboardKey.KEY_J))
+        {
+          pressJ = true;
+        }
+
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_SHIFT))
+        {
+          pressHold = true;
+        }
+
+
+        // Shift are to hold.
+
+        if (Raylib.IsKeyUp(KeyboardKey.KEY_S))
+        {
+          S_HoldTime = 0;
+        }
+
+        if (Raylib.IsKeyUp(KeyboardKey.KEY_D))
+        {
+          D_HoldTime = 0;
+        }
+
+        if (Raylib.IsKeyUp(KeyboardKey.KEY_A))
+        {
+          A_HoldTime = 0;
         }
 
         Raylib.BeginDrawing();
@@ -121,13 +223,36 @@ namespace VinterProjekt
         Raylib.DrawText(playerRect.y.ToString(), 10, 40, 20, Color.ORANGE);
         Raylib.DrawText(playerRect.x.ToString(), 60, 40, 20, Color.ORANGE);
 
+        if (pressK)
+        {
+          Raylib.DrawText("rotate 90° counterclockwise :3", 330, 625, 50, Color.BLACK);
+        }
+
+        else if (pressJ)
+        {
+          Raylib.DrawText("rotate 90° clockwise :3", 380, 625, 50, Color.BLACK);
+        }
+
+        else if (pressHold)
+        {
+          Raylib.DrawText("Holding?", 600, 625, 50, Color.BLACK);
+        }
+
         Raylib.DrawRectangleRec(playerRect, Color.SKYBLUE);
 
         Raylib.EndDrawing();
 
       }
-
     }
+
+    private static void OnTimedEvent(object source, ElapsedEventArgs e)
+    {
+      Pieces pieces = new Pieces();
+      pieces.I_RECT1.y += Convert.ToSingle(25);
+      pieces.I_RECT2.y += Convert.ToSingle(25);
+      pieces.I_RECT3.y += Convert.ToSingle(25);
+      pieces.I_RECT4.y += Convert.ToSingle(25);
+    }
+
   }
 }
-
