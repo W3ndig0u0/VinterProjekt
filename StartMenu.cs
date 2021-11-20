@@ -1,0 +1,279 @@
+using System;
+using Raylib_cs;
+using System.Numerics;
+
+namespace VinterProjekt
+{
+  public class StartMenu
+  {
+    public void Menu()
+    {
+
+      Pieces pieces = new Pieces();
+      GamePlay game = new GamePlay();
+
+      Rectangle StartBlock = new Rectangle(0, 0, 1400, 60);
+      Rectangle EndBlock = new Rectangle(0, 660, 1400, 60);
+
+      Rectangle startButton = new Rectangle(300, 200, 1100, 80);
+      Rectangle profileButton = new Rectangle(300, 290, 1100, 80);
+      Rectangle settingButton = new Rectangle(300, 380, 1100, 80);
+      Rectangle aboutButton = new Rectangle(300, 470, 1100, 80);
+
+      Rectangle exitButton = new Rectangle(0, 70, 90, 50);
+      Rectangle profile = new Rectangle(1220, 5, 170, 50);
+
+      Rectangle facebookButton = new Rectangle(1190, 650, 50, 50);
+      Rectangle twitterButton = new Rectangle(1260, 650, 50, 50);
+      Rectangle githubButton = new Rectangle(1330, 650, 50, 50);
+
+
+      while (!Raylib.WindowShouldClose())
+      {
+        Vector2 mousePos = Raylib.GetMousePosition();
+
+        bool areOverlappingStart = Raylib.CheckCollisionPointRec(mousePos, startButton);
+        bool areOverlappingProfileSetting = Raylib.CheckCollisionPointRec(mousePos, profileButton);
+        bool areOverlappingSettings = Raylib.CheckCollisionPointRec(mousePos, settingButton);
+        bool areOverlappingAbout = Raylib.CheckCollisionPointRec(mousePos, aboutButton);
+
+        bool areOverlappingExit = Raylib.CheckCollisionPointRec(mousePos, exitButton);
+        bool areOverlappingProfile = Raylib.CheckCollisionPointRec(mousePos, profile);
+
+        bool areOverlappingFacebook = Raylib.CheckCollisionPointRec(mousePos, facebookButton);
+        bool areOverlappingTwitter = Raylib.CheckCollisionPointRec(mousePos, twitterButton);
+        bool areOverlappingGithub = Raylib.CheckCollisionPointRec(mousePos, githubButton);
+
+        Raylib.BeginDrawing();
+        Raylib.ClearBackground(Color.WHITE);
+        // Raylib.DrawTexture(wallpapperTexture, 0, 0, Color.WHITE);
+
+        Raylib.DrawRectangleRec(StartBlock, pieces.I_CYAN);
+        // Raylib.DrawRectangleRec(StartBlock, Color.GRAY);
+        Raylib.DrawRectangleRec(EndBlock, pieces.L_ORANGE);
+
+        Raylib.DrawRectangleRec(startButton, pieces.S_GREEN);
+        Raylib.DrawRectangleRec(aboutButton, pieces.J_BLUE);
+        Raylib.DrawRectangleRec(profileButton, pieces.T_PURPLE);
+        Raylib.DrawRectangleRec(settingButton, pieces.O_YELLOW);
+
+        Raylib.DrawRectangleRec(exitButton, pieces.Z_RED);
+        Raylib.DrawRectangleRec(profile, Color.BLACK);
+
+        Raylib.DrawRectangleRec(facebookButton, pieces.Facebook);
+        Raylib.DrawRectangleRec(twitterButton, pieces.Twitter);
+        Raylib.DrawRectangleRec(githubButton, pieces.Github);
+        // !Små länk menyn knapp interaktion
+        if (areOverlappingFacebook)
+        {
+
+          if (facebookButton.y > 625)
+          {
+            facebookButton.y -= 4;
+          }
+          facebookButton.height = 100;
+
+        }
+
+        else
+        {
+          facebookButton.height = 100;
+
+          if (facebookButton.y < 650)
+          {
+            facebookButton.y += 4;
+          }
+        }
+
+        if (areOverlappingTwitter)
+        {
+
+          if (twitterButton.y > 625)
+          {
+            twitterButton.y -= 8;
+          }
+          twitterButton.height = 100;
+        }
+
+        else
+        {
+          twitterButton.height = 100;
+
+          if (twitterButton.y < 650)
+          {
+            twitterButton.y += 4;
+          }
+        }
+
+        if (areOverlappingGithub)
+        {
+
+          if (githubButton.y > 625)
+          {
+            githubButton.y -= 4;
+          }
+          githubButton.height = 100;
+
+        }
+
+        else
+        {
+          githubButton.height = 100;
+
+          if (githubButton.y < 650)
+          {
+            githubButton.y += 4;
+          }
+        }
+
+        // !Exit Interaktion
+        if (areOverlappingExit)
+        {
+          if (exitButton.width < 130)
+          {
+            exitButton.width += 6;
+          }
+        }
+
+        else
+        {
+          if (exitButton.width > 90)
+          {
+            exitButton.width -= 6;
+          }
+        }
+
+        // !Profil
+        if (areOverlappingProfile)
+        {
+          if (profile.y < 10)
+          {
+            profile.y += 6;
+          }
+          profile.height = 55;
+
+        }
+
+        else
+        {
+          if (profile.y > 5 && profile.height > 50)
+          {
+            profile.y -= 6;
+            profile.height -= 6;
+          }
+        }
+
+        // !stora menyn knapp interaktion
+
+        if (areOverlappingAbout)
+        {
+          if (aboutButton.x > 250)
+          {
+            aboutButton.x -= 8;
+          }
+          aboutButton.width = 1400;
+
+        }
+
+        else
+        {
+          aboutButton.width = 1400;
+
+          if (aboutButton.x < 300)
+          {
+            aboutButton.x += 8;
+          }
+        }
+
+        if (areOverlappingProfileSetting)
+        {
+          if (profileButton.x > 250)
+          {
+            profileButton.x -= 8;
+          }
+          profileButton.width = 1400;
+        }
+
+        else
+        {
+          profileButton.width = 1400;
+
+          if (profileButton.x < 300)
+          {
+            profileButton.x += 8;
+          }
+        }
+
+        if (areOverlappingSettings)
+        {
+          if (settingButton.x > 250)
+          {
+            settingButton.x -= 8;
+          }
+          settingButton.width = 1400;
+
+        }
+
+        else
+        {
+          settingButton.width = 1400;
+
+          if (settingButton.x < 300)
+          {
+            settingButton.x += 8;
+          }
+        }
+
+        if (areOverlappingStart)
+        {
+          if (startButton.x > 250)
+          {
+            startButton.x -= 8;
+          }
+          startButton.width = 1400;
+
+          if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON))
+          {
+            game.Game();
+          }
+
+        }
+
+        else
+        {
+          startButton.width = 1400;
+
+          if (startButton.x < 300)
+          {
+            startButton.x += 8;
+          }
+        }
+
+
+
+        Raylib.DrawText("Home", 10, 10, 40, Color.WHITE);
+        Raylib.DrawText("Jing Xu - Te 19B", 1000, 670, 20, Color.WHITE);
+        Raylib.DrawText("Welcome To Tetris!", 20, 670, 20, Color.WHITE);
+        Raylib.DrawText("Exit!", 10, 80, 30, Color.WHITE);
+
+        Raylib.DrawText("Play!", 400, 205, 40, Color.WHITE);
+        Raylib.DrawText("Tetris Time!", 400, 250, 20, Color.WHITE);
+
+        Raylib.DrawText("Profile", 400, 295, 40, Color.WHITE);
+        Raylib.DrawText("Change your Profile...", 400, 340, 20, Color.WHITE);
+
+        Raylib.DrawText("Settings", 400, 385, 40, Color.WHITE);
+        Raylib.DrawText("Settings...", 400, 430, 20, Color.WHITE);
+
+        Raylib.DrawText("About", 400, 475, 40, Color.WHITE);
+        Raylib.DrawText("What the heck is this?", 400, 520, 20, Color.WHITE);
+
+        Raylib.DrawText("F", 1205, 660, 30, Color.WHITE);
+        Raylib.DrawText("T", 1275, 660, 30, Color.WHITE);
+        Raylib.DrawText("G", 1345, 660, 30, Color.WHITE);
+
+        Raylib.EndDrawing();
+      }
+    }
+  }
+}

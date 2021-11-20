@@ -5,6 +5,10 @@ namespace VinterProjekt
   public class Pieces
   {
     //   
+    public Color Github = new Color(23, 21, 21, 255);
+    public Color Twitter = new Color(29, 161, 242, 255);
+    public Color Facebook = new Color(66, 103, 178, 255);
+
     public Color J_BLUE = new Color(3, 65, 174, 255);
     public Color S_GREEN = new Color(114, 203, 59, 255);
     public Color Z_RED = new Color(255, 50, 19, 255);
