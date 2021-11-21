@@ -41,7 +41,7 @@ namespace VinterProjekt
       Texture2D twitterTexture = Raylib.LoadTextureFromImage(twitterImg);
 
 
-      Image wallpapperMenu = Raylib.LoadImage(@"Background5.png");
+      Image wallpapperMenu = Raylib.LoadImage(@"Background3.png");
       Raylib.ImageResize(ref wallpapperMenu, 1400, 700);
       Texture2D wallpapperMenuTextrure = Raylib.LoadTextureFromImage(wallpapperMenu);
 

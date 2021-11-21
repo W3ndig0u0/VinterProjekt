@@ -20,11 +20,11 @@ namespace VinterProjekt
       int intro = 0;
 
       Image tetrisImg = Raylib.LoadImage(@"Tetris.png");
-      Image wallpapperTetris = Raylib.LoadImage(@"Background2.png");
-      Raylib.ImageResize(ref wallpapperTetris, 1400, 700);
-
       Texture2D tetrisTexture = Raylib.LoadTextureFromImage(tetrisImg);
-      Texture2D wallpapperTetrisTexture = Raylib.LoadTextureFromImage(wallpapperTetris);
+
+      // Image wallpapperTetris = Raylib.LoadImage(@"Background2.png");
+      // Raylib.ImageResize(ref wallpapperTetris, 1400, 700);
+      // Texture2D wallpapperTetrisTexture = Raylib.LoadTextureFromImage(wallpapperTetris);
 
       while (!Raylib.WindowShouldClose())
       {
@@ -33,16 +33,21 @@ namespace VinterProjekt
         intro += 5;
 
         // !FAde in eller nåt
-        if (intro < 500)
+        if (intro < 100)
         {
-          // Raylib.DrawRectangle(0, 0, 1400, 700, Color.DARKBLUE);
-          Raylib.DrawTexture(wallpapperTetrisTexture, 0, 0, Color.WHITE);
+          Raylib.DrawRectangle(0, 0, 1400, 700, Color.BLUE);
+        }
+
+        else if (intro < 800)
+        {
+          Raylib.DrawRectangle(0, 0, 1400, 700, Color.BLUE);
+          // Raylib.DrawTexture(wallpapperTetrisTexture, 0, 0, Color.WHITE);
           Raylib.DrawTexture(tetrisTexture, 550, 150, Color.WHITE);
         }
 
         else if (intro < 1000)
         {
-          Raylib.DrawTexture(wallpapperTetrisTexture, 0, 0, Color.WHITE);
+          Raylib.DrawRectangle(0, 0, 1400, 700, Color.BLUE);
           Raylib.DrawTexture(tetrisTexture, 550, 150, Color.WHITE);
           Raylib.DrawText("Tetris © 1985~2021 Tetris Holding.", 370, 460, 20, Color.BLACK);
           Raylib.DrawText("Tetris logos, Tetris theme song and Tetriminos are trademarks of Tetris Holding.", 370, 480, 20, Color.BLACK);
@@ -51,8 +56,8 @@ namespace VinterProjekt
           Raylib.DrawText("Tetris Game Design by Alexey Pajitnov.", 370, 540, 20, Color.BLACK);
           Raylib.DrawText("Tetris Logo Design by Roger Dean.", 370, 560, 20, Color.BLACK);
           Raylib.DrawText("All Rights Reserved.", 370, 580, 20, Color.BLACK);
-
         }
+
         else if (intro < 2000)
         {
           Raylib.DrawRectangle(0, 0, 1400, 700, Color.RED);
