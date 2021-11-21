@@ -4,11 +4,6 @@ namespace VinterProjekt
 {
   public class Pieces
   {
-    //   
-    public Color Github = new Color(23, 21, 21, 255);
-    public Color Twitter = new Color(29, 161, 242, 255);
-    public Color Facebook = new Color(66, 103, 178, 255);
-
     public Color J_BLUE = new Color(3, 65, 174, 255);
     public Color S_GREEN = new Color(114, 203, 59, 255);
     public Color Z_RED = new Color(255, 50, 19, 255);
@@ -32,15 +27,15 @@ namespace VinterProjekt
 
     //   !S Rect
     public Rectangle S_RECT1 = new Rectangle(425, 125, 25, 25);
-    public Rectangle S_RECT2 = new Rectangle(450, 100, 25, 25);
-    public Rectangle S_RECT3 = new Rectangle(425, 100, 25, 25);
+    public Rectangle S_RECT2 = new Rectangle(425, 100, 25, 25);
+    public Rectangle S_RECT3 = new Rectangle(400, 100, 25, 25);
     public Rectangle S_RECT4 = new Rectangle(450, 125, 25, 25);
 
     //   !Z Rect
-    public Rectangle Z_RECT1 = new Rectangle(350, 125, 25, 25);
-    public Rectangle Z_RECT2 = new Rectangle(325, 125, 25, 25);
-    public Rectangle Z_RECT3 = new Rectangle(350, 100, 25, 25);
-    public Rectangle Z_RECT4 = new Rectangle(375, 100, 25, 25);
+    public Rectangle Z_RECT1 = new Rectangle(325, 125, 25, 25);
+    public Rectangle Z_RECT2 = new Rectangle(300, 125, 25, 25);
+    public Rectangle Z_RECT3 = new Rectangle(325, 100, 25, 25);
+    public Rectangle Z_RECT4 = new Rectangle(350, 100, 25, 25);
 
     //   !L Rect
     public Rectangle L_RECT1 = new Rectangle(250, 100, 25, 25);
@@ -49,15 +44,15 @@ namespace VinterProjekt
     public Rectangle L_RECT4 = new Rectangle(275, 150, 25, 25);
 
     //   !J Rect
-    public Rectangle J_RECT1 = new Rectangle(175, 100, 25, 25);
-    public Rectangle J_RECT2 = new Rectangle(175, 125, 25, 25);
-    public Rectangle J_RECT3 = new Rectangle(175, 150, 25, 25);
-    public Rectangle J_RECT4 = new Rectangle(200, 150, 25, 25);
+    public Rectangle J_RECT1 = new Rectangle(200, 100, 25, 25);
+    public Rectangle J_RECT2 = new Rectangle(200, 125, 25, 25);
+    public Rectangle J_RECT3 = new Rectangle(200, 150, 25, 25);
+    public Rectangle J_RECT4 = new Rectangle(175, 150, 25, 25);
 
     //   !T Rect
-    public Rectangle T_RECT1 = new Rectangle(125, 125, 25, 25);
-    public Rectangle T_RECT2 = new Rectangle(100, 100, 25, 25);
-    public Rectangle T_RECT13 = new Rectangle(100, 125, 25, 25);
-    public Rectangle T_RECT4 = new Rectangle(75, 125, 25, 25);
+    public Rectangle T_RECT1 = new Rectangle(150, 125, 25, 25);
+    public Rectangle T_RECT2 = new Rectangle(125, 100, 25, 25);
+    public Rectangle T_RECT13 = new Rectangle(125, 125, 25, 25);
+    public Rectangle T_RECT4 = new Rectangle(100, 125, 25, 25);
   }
 }

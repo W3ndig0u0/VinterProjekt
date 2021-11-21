@@ -28,6 +28,26 @@ namespace VinterProjekt
       Rectangle githubButton = new Rectangle(1330, 650, 50, 50);
 
 
+      Image githubImg = Raylib.LoadImage(@"Github.png");
+      Raylib.ImageResize(ref githubImg, 30, 30);
+      Texture2D githubTexture = Raylib.LoadTextureFromImage(githubImg);
+
+      Image facebookImg = Raylib.LoadImage(@"Facebook.png");
+      Raylib.ImageResize(ref facebookImg, 30, 30);
+      Texture2D facebookTexture = Raylib.LoadTextureFromImage(facebookImg);
+
+      Image twitterImg = Raylib.LoadImage(@"Twitter.png");
+      Raylib.ImageResize(ref twitterImg, 40, 40);
+      Texture2D twitterTexture = Raylib.LoadTextureFromImage(twitterImg);
+
+
+      Image wallpapperMenu = Raylib.LoadImage(@"Backgound.png");
+      Raylib.ImageResize(ref wallpapperMenu, 1400, 700);
+      Texture2D wallpapperMenuTextrure = Raylib.LoadTextureFromImage(wallpapperMenu);
+
+
+      Font f1 = Raylib.LoadFont(@"Roboto-Bold.ttf");
+
       while (!Raylib.WindowShouldClose())
       {
         Vector2 mousePos = Raylib.GetMousePosition();
@@ -46,10 +66,9 @@ namespace VinterProjekt
 
         Raylib.BeginDrawing();
         Raylib.ClearBackground(Color.WHITE);
-        // Raylib.DrawTexture(wallpapperTexture, 0, 0, Color.WHITE);
+        Raylib.DrawTexture(wallpapperMenuTextrure, 0, 0, Color.WHITE);
 
         Raylib.DrawRectangleRec(StartBlock, pieces.I_CYAN);
-        // Raylib.DrawRectangleRec(StartBlock, Color.GRAY);
         Raylib.DrawRectangleRec(EndBlock, pieces.L_ORANGE);
 
         Raylib.DrawRectangleRec(startButton, pieces.S_GREEN);
@@ -60,10 +79,11 @@ namespace VinterProjekt
         Raylib.DrawRectangleRec(exitButton, pieces.Z_RED);
         Raylib.DrawRectangleRec(profile, Color.BLACK);
 
-        Raylib.DrawRectangleRec(facebookButton, pieces.Facebook);
-        Raylib.DrawRectangleRec(twitterButton, pieces.Twitter);
-        Raylib.DrawRectangleRec(githubButton, pieces.Github);
-        // !Små länk menyn knapp interaktion
+        Raylib.DrawRectangleRec(facebookButton, Color.WHITE);
+        Raylib.DrawRectangleRec(twitterButton, Color.WHITE);
+        Raylib.DrawRectangleRec(githubButton, Color.WHITE);
+
+        // !Media menyn Btn interaktion
         if (areOverlappingFacebook)
         {
 
@@ -249,6 +269,7 @@ namespace VinterProjekt
           }
         }
 
+        // Raylib.DrawTextEx(f1, "Play!.", new Vector2(450, 205), 40, 0, Color.BLACK);
 
 
         Raylib.DrawText("Home", 10, 10, 40, Color.WHITE);
@@ -268,9 +289,11 @@ namespace VinterProjekt
         Raylib.DrawText("About", 400, 475, 40, Color.WHITE);
         Raylib.DrawText("What the heck is this?", 400, 520, 20, Color.WHITE);
 
-        Raylib.DrawText("F", 1205, 660, 30, Color.WHITE);
-        Raylib.DrawText("T", 1275, 660, 30, Color.WHITE);
-        Raylib.DrawText("G", 1345, 660, 30, Color.WHITE);
+
+
+        Raylib.DrawTexture(facebookTexture, 1200, 660, Color.WHITE);
+        Raylib.DrawTexture(twitterTexture, 1265, 655, Color.WHITE);
+        Raylib.DrawTexture(githubTexture, 1340, 660, Color.WHITE);
 
         Raylib.EndDrawing();
       }
