@@ -27,7 +27,7 @@ namespace VinterProjekt
       Rectangle twitterButton = new Rectangle(1260, 650, 50, 50);
       Rectangle githubButton = new Rectangle(1330, 650, 50, 50);
 
-
+      // !Icons
       Image githubImg = Raylib.LoadImage(@"Github.png");
       Raylib.ImageResize(ref githubImg, 30, 30);
       Texture2D githubTexture = Raylib.LoadTextureFromImage(githubImg);
@@ -41,16 +41,38 @@ namespace VinterProjekt
       Texture2D twitterTexture = Raylib.LoadTextureFromImage(twitterImg);
 
 
+      Image gameImg = Raylib.LoadImage(@"GameIcon.png");
+      Image profileImg = Raylib.LoadImage(@"Profile.png");
+      Image settingsImg = Raylib.LoadImage(@"Settings.png");
+      Image aboutImg = Raylib.LoadImage(@"About.png");
+
+      Raylib.ImageResize(ref gameImg, 60, 60);
+      Raylib.ImageResize(ref profileImg, 60, 60);
+      Raylib.ImageResize(ref settingsImg, 60, 60);
+      Raylib.ImageResize(ref aboutImg, 60, 60);
+
+      Texture2D gameImgTextrure = Raylib.LoadTextureFromImage(gameImg);
+      Texture2D profileImgTextrure = Raylib.LoadTextureFromImage(profileImg);
+      Texture2D settingsImgTextrure = Raylib.LoadTextureFromImage(settingsImg);
+      Texture2D aboutImgTextrure = Raylib.LoadTextureFromImage(aboutImg);
+
+
       Image wallpapperMenu = Raylib.LoadImage(@"Background3.png");
       Raylib.ImageResize(ref wallpapperMenu, 1400, 700);
       Texture2D wallpapperMenuTextrure = Raylib.LoadTextureFromImage(wallpapperMenu);
 
+      // !Sound
+      Sound clickSound = Raylib.LoadSound("Hover.wav");
+      Music bgm = Raylib.LoadMusicStream("MenuBgm1.mp3");
 
       Font f1 = Raylib.LoadFont(@"Roboto-Bold.ttf");
 
       while (!Raylib.WindowShouldClose())
       {
         Vector2 mousePos = Raylib.GetMousePosition();
+        Raylib.PlayMusicStream(bgm);
+        Raylib.UpdateMusicStream(bgm);
+        Raylib.SetMusicVolume(bgm, 0.5f);
 
         bool areOverlappingStart = Raylib.CheckCollisionPointRec(mousePos, startButton);
         bool areOverlappingProfileSetting = Raylib.CheckCollisionPointRec(mousePos, profileButton);
@@ -93,6 +115,14 @@ namespace VinterProjekt
           }
           facebookButton.height = 100;
 
+          if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
+          {
+            Raylib.PlaySound(clickSound);
+
+            // game.Game();
+          }
+
+
         }
 
         else
@@ -113,6 +143,14 @@ namespace VinterProjekt
             twitterButton.y -= 8;
           }
           twitterButton.height = 100;
+
+          if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
+          {
+            Raylib.PlaySound(clickSound);
+
+            // game.Game();
+          }
+
         }
 
         else
@@ -134,6 +172,14 @@ namespace VinterProjekt
           }
           githubButton.height = 100;
 
+
+          if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
+          {
+            Raylib.PlaySound(clickSound);
+
+            // game.Game();
+          }
+
         }
 
         else
@@ -153,6 +199,15 @@ namespace VinterProjekt
           {
             exitButton.width += 6;
           }
+
+
+          if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
+          {
+            Raylib.PlaySound(clickSound);
+
+            // game.Game();
+          }
+
         }
 
         else
@@ -172,6 +227,12 @@ namespace VinterProjekt
           }
           profile.height = 55;
 
+          if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
+          {
+            Raylib.PlaySound(clickSound);
+
+            // game.Game();
+          }
         }
 
         else
@@ -193,6 +254,13 @@ namespace VinterProjekt
           }
           aboutButton.width = 1400;
 
+          if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
+          {
+            Raylib.PlaySound(clickSound);
+
+            // game.Game();
+          }
+
         }
 
         else
@@ -212,6 +280,14 @@ namespace VinterProjekt
             profileButton.x -= 8;
           }
           profileButton.width = 1400;
+
+          if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
+          {
+            Raylib.PlaySound(clickSound);
+
+            // game.Game();
+          }
+
         }
 
         else
@@ -231,6 +307,13 @@ namespace VinterProjekt
             settingButton.x -= 8;
           }
           settingButton.width = 1400;
+
+          if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
+          {
+            Raylib.PlaySound(clickSound);
+
+            // game.Game();
+          }
 
         }
 
@@ -252,9 +335,11 @@ namespace VinterProjekt
           }
           startButton.width = 1400;
 
-          if (Raylib.IsMouseButtonDown(MouseButton.MOUSE_LEFT_BUTTON))
+          if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
           {
-            game.Game();
+            Raylib.PlaySound(clickSound);
+
+            // game.Game();
           }
 
         }
@@ -294,6 +379,12 @@ namespace VinterProjekt
         Raylib.DrawTexture(facebookTexture, 1200, 660, Color.WHITE);
         Raylib.DrawTexture(twitterTexture, 1265, 655, Color.WHITE);
         Raylib.DrawTexture(githubTexture, 1340, 660, Color.WHITE);
+
+
+        Raylib.DrawTexture(gameImgTextrure, 310, 210, Color.WHITE);
+        Raylib.DrawTexture(profileImgTextrure, 310, 300, Color.WHITE);
+        Raylib.DrawTexture(settingsImgTextrure, 310, 390, Color.WHITE);
+        Raylib.DrawTexture(aboutImgTextrure, 310, 480, Color.WHITE);
 
         Raylib.EndDrawing();
       }
