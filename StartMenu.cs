@@ -381,10 +381,10 @@ namespace VinterProjekt
         Raylib.DrawTexture(githubTexture, 1340, 660, Color.WHITE);
 
 
-        Raylib.DrawTexture(gameImgTextrure, 310, 210, Color.WHITE);
-        Raylib.DrawTexture(profileImgTextrure, 310, 300, Color.WHITE);
-        Raylib.DrawTexture(settingsImgTextrure, 310, 390, Color.WHITE);
-        Raylib.DrawTexture(aboutImgTextrure, 310, 480, Color.WHITE);
+        Raylib.DrawTexture(gameImgTextrure, 320, 210, Color.WHITE);
+        Raylib.DrawTexture(profileImgTextrure, 320, 300, Color.WHITE);
+        Raylib.DrawTexture(settingsImgTextrure, 320, 390, Color.WHITE);
+        Raylib.DrawTexture(aboutImgTextrure, 320, 480, Color.WHITE);
 
         Raylib.EndDrawing();
       }
