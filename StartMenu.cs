@@ -27,6 +27,8 @@ namespace VinterProjekt
       Rectangle twitterButton = new Rectangle(1260, 650, 50, 50);
       Rectangle githubButton = new Rectangle(1330, 650, 50, 50);
 
+      Rectangle newScreen = new Rectangle(3000, 0, 1400, 700);
+
       // !Icons
       Image githubImg = Raylib.LoadImage(@"Github.png");
       Raylib.ImageResize(ref githubImg, 30, 30);
@@ -104,6 +106,40 @@ namespace VinterProjekt
         Raylib.DrawRectangleRec(facebookButton, Color.WHITE);
         Raylib.DrawRectangleRec(twitterButton, Color.WHITE);
         Raylib.DrawRectangleRec(githubButton, Color.WHITE);
+
+
+
+
+        Raylib.DrawText("Home", 10, 10, 40, Color.WHITE);
+        Raylib.DrawText("Jing Xu - Te 19B", 1000, 670, 20, Color.WHITE);
+        Raylib.DrawText("Welcome To Tetris!", 20, 670, 20, Color.WHITE);
+        Raylib.DrawText("Exit!", 10, 80, 30, Color.WHITE);
+
+        Raylib.DrawText("Play!", 400, 205, 40, Color.WHITE);
+        Raylib.DrawText("Tetris Time!", 400, 250, 20, Color.WHITE);
+
+        Raylib.DrawText("Profile", 400, 295, 40, Color.WHITE);
+        Raylib.DrawText("Change your Profile...", 400, 340, 20, Color.WHITE);
+
+        Raylib.DrawText("Settings", 400, 385, 40, Color.WHITE);
+        Raylib.DrawText("Settings...", 400, 430, 20, Color.WHITE);
+
+        Raylib.DrawText("About", 400, 475, 40, Color.WHITE);
+        Raylib.DrawText("What the heck is this?", 400, 520, 20, Color.WHITE);
+
+
+
+        Raylib.DrawTexture(facebookTexture, 1200, 660, Color.WHITE);
+        Raylib.DrawTexture(twitterTexture, 1265, 655, Color.WHITE);
+        Raylib.DrawTexture(githubTexture, 1340, 660, Color.WHITE);
+
+
+        Raylib.DrawTexture(gameImgTextrure, 320, 210, Color.WHITE);
+        Raylib.DrawTexture(profileImgTextrure, 320, 300, Color.WHITE);
+        Raylib.DrawTexture(settingsImgTextrure, 320, 390, Color.WHITE);
+        Raylib.DrawTexture(aboutImgTextrure, 320, 480, Color.WHITE);
+
+        Raylib.DrawRectangleRec(newScreen, Color.WHITE);
 
         // !Media menyn Btn interaktion
         if (areOverlappingFacebook)
@@ -338,7 +374,11 @@ namespace VinterProjekt
           if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
           {
             Raylib.PlaySound(clickSound);
-
+            if (newScreen.x < 1000)
+            {
+              // startButton.x += 16;
+              newScreen.x -= 16;
+            }
             // game.Game();
           }
 
@@ -355,36 +395,6 @@ namespace VinterProjekt
         }
 
         // Raylib.DrawTextEx(f1, "Play!.", new Vector2(450, 205), 40, 0, Color.BLACK);
-
-
-        Raylib.DrawText("Home", 10, 10, 40, Color.WHITE);
-        Raylib.DrawText("Jing Xu - Te 19B", 1000, 670, 20, Color.WHITE);
-        Raylib.DrawText("Welcome To Tetris!", 20, 670, 20, Color.WHITE);
-        Raylib.DrawText("Exit!", 10, 80, 30, Color.WHITE);
-
-        Raylib.DrawText("Play!", 400, 205, 40, Color.WHITE);
-        Raylib.DrawText("Tetris Time!", 400, 250, 20, Color.WHITE);
-
-        Raylib.DrawText("Profile", 400, 295, 40, Color.WHITE);
-        Raylib.DrawText("Change your Profile...", 400, 340, 20, Color.WHITE);
-
-        Raylib.DrawText("Settings", 400, 385, 40, Color.WHITE);
-        Raylib.DrawText("Settings...", 400, 430, 20, Color.WHITE);
-
-        Raylib.DrawText("About", 400, 475, 40, Color.WHITE);
-        Raylib.DrawText("What the heck is this?", 400, 520, 20, Color.WHITE);
-
-
-
-        Raylib.DrawTexture(facebookTexture, 1200, 660, Color.WHITE);
-        Raylib.DrawTexture(twitterTexture, 1265, 655, Color.WHITE);
-        Raylib.DrawTexture(githubTexture, 1340, 660, Color.WHITE);
-
-
-        Raylib.DrawTexture(gameImgTextrure, 320, 210, Color.WHITE);
-        Raylib.DrawTexture(profileImgTextrure, 320, 300, Color.WHITE);
-        Raylib.DrawTexture(settingsImgTextrure, 320, 390, Color.WHITE);
-        Raylib.DrawTexture(aboutImgTextrure, 320, 480, Color.WHITE);
 
         Raylib.EndDrawing();
       }

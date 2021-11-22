@@ -53,6 +53,7 @@ namespace VinterProjekt
         {
           Raylib.DrawRectangle(0, 0, 1400, 700, Color.BLUE);
           Raylib.DrawTexture(tetrisTexture, 550, 150, Color.WHITE);
+          Raylib.PlaySound(startSound);
           Raylib.DrawText("Tetris © 1985~2021 Tetris Holding.", 370, 460, 20, Color.BLACK);
           Raylib.DrawText("Tetris logos, Tetris theme song and Tetriminos are trademarks of Tetris Holding.", 370, 480, 20, Color.BLACK);
           Raylib.DrawText("The Tetris trade dress is owned by Tetris Holding.", 370, 500, 20, Color.BLACK);
@@ -63,14 +64,7 @@ namespace VinterProjekt
 
         }
 
-        else if (intro < 2500)
-        {
-          Raylib.DrawRectangle(0, 0, 1400, 700, Color.RED);
-          Raylib.PlaySound(startSound);
-
-        }
-
-        else if (intro < 3500)
+        else if (intro < 2200)
         {
           Start.Menu();
           menuBool = true;
