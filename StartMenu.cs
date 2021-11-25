@@ -108,8 +108,6 @@ namespace VinterProjekt
         Raylib.DrawRectangleRec(githubButton, Color.WHITE);
 
 
-
-
         Raylib.DrawText("Home", 10, 10, 40, Color.WHITE);
         Raylib.DrawText("Jing Xu - Te 19B", 1000, 670, 20, Color.WHITE);
         Raylib.DrawText("Welcome To Tetris!", 20, 670, 20, Color.WHITE);
@@ -157,7 +155,6 @@ namespace VinterProjekt
 
             // game.Game();
           }
-
 
         }
 
@@ -374,14 +371,8 @@ namespace VinterProjekt
           if (Raylib.IsMouseButtonPressed(MouseButton.MOUSE_LEFT_BUTTON))
           {
             Raylib.PlaySound(clickSound);
-            if (newScreen.x < 1000)
-            {
-              // startButton.x += 16;
-              newScreen.x -= 16;
-            }
-            // game.Game();
+            game.Game();
           }
-
         }
 
         else

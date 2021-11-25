@@ -44,8 +44,6 @@ namespace VinterProjekt
 
       while (game)
       {
-
-
         // !Hold a bit = SPEEED
         if (Raylib.IsKeyDown(KeyboardKey.KEY_S) && playerRect.y < 575)
         {
@@ -109,6 +107,7 @@ namespace VinterProjekt
           playerRect.y = 575;
         }
 
+
         bool pressK = false;
         bool pressJ = false;
         bool pressHold = false;
@@ -127,6 +126,12 @@ namespace VinterProjekt
         if (Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_SHIFT))
         {
           pressHold = true;
+        }
+
+        if (Raylib.IsKeyDown(KeyboardKey.KEY_Q))
+        {
+          playerRect.x = 700;
+          playerRect.y = 100;
         }
 
 
@@ -157,40 +162,13 @@ namespace VinterProjekt
         }
 
         // !Pieces
-        Raylib.DrawRectangleRec(pieces.I_RECT1, pieces.I_CYAN);
-        Raylib.DrawRectangleRec(pieces.I_RECT2, pieces.I_CYAN);
-        Raylib.DrawRectangleRec(pieces.I_RECT3, pieces.I_CYAN);
-        Raylib.DrawRectangleRec(pieces.I_RECT4, pieces.I_CYAN);
-
-        Raylib.DrawRectangleRec(pieces.O_RECT1, pieces.O_YELLOW);
-        Raylib.DrawRectangleRec(pieces.O_RECT2, pieces.O_YELLOW);
-        Raylib.DrawRectangleRec(pieces.O_RECT3, pieces.O_YELLOW);
-        Raylib.DrawRectangleRec(pieces.O_RECT4, pieces.O_YELLOW);
-
-        Raylib.DrawRectangleRec(pieces.S_RECT1, pieces.S_GREEN);
-        Raylib.DrawRectangleRec(pieces.S_RECT2, pieces.S_GREEN);
-        Raylib.DrawRectangleRec(pieces.S_RECT3, pieces.S_GREEN);
-        Raylib.DrawRectangleRec(pieces.S_RECT4, pieces.S_GREEN);
-
-        Raylib.DrawRectangleRec(pieces.Z_RECT1, pieces.Z_RED);
-        Raylib.DrawRectangleRec(pieces.Z_RECT2, pieces.Z_RED);
-        Raylib.DrawRectangleRec(pieces.Z_RECT3, pieces.Z_RED);
-        Raylib.DrawRectangleRec(pieces.Z_RECT4, pieces.Z_RED);
-
-        Raylib.DrawRectangleRec(pieces.L_RECT1, pieces.L_ORANGE);
-        Raylib.DrawRectangleRec(pieces.L_RECT2, pieces.L_ORANGE);
-        Raylib.DrawRectangleRec(pieces.L_RECT3, pieces.L_ORANGE);
-        Raylib.DrawRectangleRec(pieces.L_RECT4, pieces.L_ORANGE);
-
-        Raylib.DrawRectangleRec(pieces.J_RECT1, pieces.J_BLUE);
-        Raylib.DrawRectangleRec(pieces.J_RECT2, pieces.J_BLUE);
-        Raylib.DrawRectangleRec(pieces.J_RECT3, pieces.J_BLUE);
-        Raylib.DrawRectangleRec(pieces.J_RECT4, pieces.J_BLUE);
-
-        Raylib.DrawRectangleRec(pieces.T_RECT1, pieces.T_PURPLE);
-        Raylib.DrawRectangleRec(pieces.T_RECT2, pieces.T_PURPLE);
-        Raylib.DrawRectangleRec(pieces.T_RECT13, pieces.T_PURPLE);
-        Raylib.DrawRectangleRec(pieces.T_RECT4, pieces.T_PURPLE);
+        pieces.DrawI();
+        pieces.DrawL();
+        pieces.DrawZ();
+        pieces.DrawS();
+        pieces.DrawT();
+        pieces.DrawJ();
+        pieces.DrawO();
 
         Raylib.DrawText(playerRect.y.ToString(), 10, 40, 20, Color.ORANGE);
         Raylib.DrawText(playerRect.x.ToString(), 60, 40, 20, Color.ORANGE);

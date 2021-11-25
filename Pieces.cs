@@ -1,9 +1,18 @@
 using Raylib_cs;
+using System;
+using System.Collections.Generic;
+
+
 
 namespace VinterProjekt
 {
   public class Pieces
   {
+
+    Random rand = new Random();
+    List<string> pieces = new List<string>() { "I", "T", "Z", "S", "O", "L", "J" };
+    // List<Rectangle> pieces = new List<Rectangle>() { };
+
     public Color J_BLUE = new Color(3, 65, 174, 255);
     public Color S_GREEN = new Color(114, 203, 59, 255);
     public Color Z_RED = new Color(255, 50, 19, 255);
@@ -52,7 +61,78 @@ namespace VinterProjekt
     //   !T Rect
     public Rectangle T_RECT1 = new Rectangle(150, 125, 25, 25);
     public Rectangle T_RECT2 = new Rectangle(125, 100, 25, 25);
-    public Rectangle T_RECT13 = new Rectangle(125, 125, 25, 25);
+    public Rectangle T_RECT3 = new Rectangle(125, 125, 25, 25);
     public Rectangle T_RECT4 = new Rectangle(100, 125, 25, 25);
+
+
+    // public void RandomPieces()
+    // {
+    //   // int i = rand.Next(7);
+    //   for (int i = 0; i < pieces.Count; i++)
+    //   {
+    //     pieces[i];
+    //   }
+
+    // }
+
+    public void DrawL()
+    {
+      Raylib.DrawRectangleRec(L_RECT1, L_ORANGE);
+      Raylib.DrawRectangleRec(L_RECT2, L_ORANGE);
+      Raylib.DrawRectangleRec(L_RECT3, L_ORANGE);
+      Raylib.DrawRectangleRec(L_RECT4, L_ORANGE);
+    }
+
+    public void DrawZ()
+    {
+      Raylib.DrawRectangleRec(Z_RECT1, Z_RED);
+      Raylib.DrawRectangleRec(Z_RECT2, Z_RED);
+      Raylib.DrawRectangleRec(Z_RECT3, Z_RED);
+      Raylib.DrawRectangleRec(Z_RECT4, Z_RED);
+    }
+
+
+    public void DrawS()
+    {
+      Raylib.DrawRectangleRec(S_RECT1, S_GREEN);
+      Raylib.DrawRectangleRec(S_RECT2, S_GREEN);
+      Raylib.DrawRectangleRec(S_RECT3, S_GREEN);
+      Raylib.DrawRectangleRec(S_RECT4, S_GREEN);
+
+    }
+
+
+    public void DrawO()
+    {
+      Raylib.DrawRectangleRec(O_RECT1, O_YELLOW);
+      Raylib.DrawRectangleRec(O_RECT2, O_YELLOW);
+      Raylib.DrawRectangleRec(O_RECT3, O_YELLOW);
+      Raylib.DrawRectangleRec(O_RECT4, O_YELLOW);
+    }
+
+    public void DrawI()
+    {
+
+      Raylib.DrawRectangleRec(I_RECT1, I_CYAN);
+      Raylib.DrawRectangleRec(I_RECT2, I_CYAN);
+      Raylib.DrawRectangleRec(I_RECT3, I_CYAN);
+      Raylib.DrawRectangleRec(I_RECT4, I_CYAN);
+    }
+
+    public void DrawJ()
+    {
+      Raylib.DrawRectangleRec(J_RECT1, J_BLUE);
+      Raylib.DrawRectangleRec(J_RECT2, J_BLUE);
+      Raylib.DrawRectangleRec(J_RECT3, J_BLUE);
+      Raylib.DrawRectangleRec(J_RECT4, J_BLUE);
+    }
+
+    public void DrawT()
+    {
+      Raylib.DrawRectangleRec(T_RECT1, T_PURPLE);
+      Raylib.DrawRectangleRec(T_RECT2, T_PURPLE);
+      Raylib.DrawRectangleRec(T_RECT3, T_PURPLE);
+      Raylib.DrawRectangleRec(T_RECT4, T_PURPLE);
+    }
   }
 }
